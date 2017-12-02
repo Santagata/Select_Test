@@ -47,7 +47,7 @@ ls *._cds.fa > CDS_list.txt
 
 You will need to install PAL2NAL. It can be downloaded here http://www.bork.embl.de/pal2nal/. Make sure the prgram is accessible from your account path.
 
-Use the perl script CDS_AA_Hash_for_PAL2NAL.pl with the command usage
+Use the perl script CDS_AA_Hash_for_PAL2NAL.pl with the command usage. Be sure to understand the usage of tthe screen command (https://thesystemadministrator.net/cpanel/how-to-install-and-use-screen-in-linux) so that long processes do not stop when you exit your server.
 
 perl CDS_AA_Hash_for_PAL2NAL.pl CDS_list.txt ALN_list.txt
 
@@ -58,7 +58,9 @@ system "perl pal2nal.pl $a_files[$i] $c_files[$i] -output paml -nogap -codontabl
 
 change paml to fasta
 
-Now you have all the aligned cds files that you will need for PAML:CODEML and HYPHY
+Now you have all the aligned cds files that you will need for PAML:CODEML and HYPHY.
+
+
 
 
 
