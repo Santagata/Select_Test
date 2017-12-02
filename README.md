@@ -71,7 +71,7 @@ You will need to create a control file *.ctl for running CODEML using the null h
 
 You will need to create a list of the aligned cds files you plan to test as described above. You should also creat a list that repeats the corresponding species tree file for as many aligned cds files that you wish to test. The perl script below will allow you to either use the same species tree for all your tests are try out different species trees. 
 
-You will also need to label the foreground branches (Polar Species) on your species tree (using a newick format) with #1, for example see the tree file below. Your tree should include branch lengths and be UNROOTED. Particular nodes may also be labeled in the foreground.
+You will also need to label the foreground branches (Polar Species) on your species tree (using a newick format) with #1, for example see the tree file below. Your tree should include branch lengths and be UNROOTED. Particular nodes may also be labeled in the foreground. If you have trouble creating an unrooted tree consider using the included Afterphylo.pl perl script.
 
 (((Bugner:0.159527,(Camptaug#1:0.077304,Ausvul#1:0.071029):0.030435):0.055321,(Cellarlat#1:0.116033,((WatersipFL:0.127171,Ccrass#1:0.070258):0.042494,SchizoFL:0.143287):0.020109):0.055403):0.0498,(Amvid:0.259907,(Horn#1:0.976799,(Alflab#1:0.28738,Alcyohauf:0.24686);
 
