@@ -54,6 +54,7 @@ perl CDS_AA_Hash_for_PAL2NAL.pl CDS_list.txt ALN_list.txt
 the perl script is set up to output the CDS alignment file for PAML = Phyllip format with no gaps nor inframe stop codons in the alignment. You should run this to produce files for PAML and also modifiy the command line for pal2nal below to output also fasta files for HYPHY.
 
 print "perl pal2nal.pl $a_files[$i] $c_files[$i] -output paml -nogap -codontable 1 > $c_files[$i]_align.phy\n";
+
 system "perl pal2nal.pl $a_files[$i] $c_files[$i] -output paml -nogap -codontable 1 > $c_files[$i]_align.phy\n";
 
 change paml to fasta
