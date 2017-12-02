@@ -61,7 +61,17 @@ change paml to fasta
 
 Now you have all the aligned cds files that you will need for PAML:CODEML and HYPHY.
 
-Running CODEML through PAML
+1)  Running CODEML through PAML
+
+PAML may be downloaded here: http://abacus.gene.ucl.ac.uk/software/paml.html
+
+We will be using the Branch-Site Model within codeml that allows for 2 or more foreground branches to be tested for positive (episodic) selection.
+
+You will need to create a control file *.ctl for running CODEML using the null hypothesis where omega=1 on the foreground branches and also the alternative hypothesis where omega is allowed to be > 1 and estimated from the data provdided using maximum likelihood.
+
+
+
+
 
 
 
