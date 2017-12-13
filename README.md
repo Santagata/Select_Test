@@ -115,6 +115,25 @@ The resulting P-values may be corrected for multiple comparisons using Benjamini
 
 https://www.sdmproject.com/utilities/?show=FDR
 
+Below are some of the important results you should look at in your MCL_ALT_files if the likelihood ratio test is significant.
+
+MLEs of dN/dS (w) for site classes (K=4)
+site         class 0   1        2a         2b
+proportion   0.74271   0.24369  0.01024    0.00336
+background w 0.06038   1.00000  0.06038    1.00000
+foreground w 0.06038   1.00000  176.87071  176.87071
+
+M0 : Proportion of sites that are under purifying selection (ω0 < 1) on both foreground and background branches.
+M1 : Proportion of sites that are under neutral evolution (ω1 = 1) on both foreground and background branches.
+M2a: Proportion of sites that are under positive selection (ω2 ≥ 1) on the foreground branch and under purifying selection (ω0 < 1) on background branches.
+M2b: Proportion of sites that are under positive selection (ω2 ≥ 1) on the foreground branch and under neutral evolution (ω1 = 1) on background branches.
+
+Bayes Empirical Bayes (BEB) analysis (Yang, Wong & Nielsen 2005. Mol.
+Biol. Evol. 22:1107-1118)
+Positive sites for foreground lineages Prob(w>1):
+33 T 0.975*
+108 E 0.999**
+
 You will need to identify the resulting significant candidate genes under positive selection. If you are familiar with batch BLAST searches, use what you like but I suggest making a batch query file from a representative peptide sequence from each of your peptide alignment files. Again, there are many ways to do this, but one example is listed below.
 
 Extract the first sequence from each peptide alignment file.
