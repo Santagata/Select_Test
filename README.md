@@ -181,17 +181,37 @@ The results may also be parsed using Hyphy-Vision (http://vision.hyphy.org)
 
 Obviously, you will want to set up and run all of these tests sequentially. To do this modify the above commands to the those listed below.
 
-for file in *.fa; do ./gen_busted.sh $file SpeciesTree_Hyphy.tre Foreground > "$(basename "$file" .tex).bf"; done
+for file in *.fa; do ./gen_busted.sh $file SpeciesTree_Hyphy.tre Foreground > "$(basename "$file" .tex).BUSTED"; done
 
 Then make a file list as described previously. 
 
-cat *.bf > Busted_list.txt
+cat *.BUSTED > Busted_list.txt
 
-Then use the provided perl script to run all of the BUSTED tests on your files.
+Then use the provided perl script to run all of the BUSTED tests on your files. You will need to edit the following line of the perl script below to match your full path to your *.BUSTED files that you just created.
+
+system("HYPHYMP /full_path_to_your_Busted_files/BUSTED/$ctl_files[$i]\n");
 
 >perl HYPHYMP_RUN.pl Busted_list.txt
 
 >screen -d    #if you want to logout without stopping any processes.
+
+3-4) Repeat this process for running HyPHy tests aBSREL and MEME using the following shell scripts
+
+gen_aBSREL.sh
+
+for file in *.fa; do ./gen_aBSREL.sh $file SpeciesTree_HYPHY.tre Foreground > "$(basename "$file" .tex).aBSREL"; done
+
+gen_MEME2.sh
+
+for file in *.fa; do ./gen_MEME2.sh $file SpeciesTree_HYPHY.tre Foreground > "$(basename "$file" .tex).MEME"; done
+
+Parsing *.json files produced by aBSREL and MEME is not a simple one or two command process (see above for Biopython option). You may need to view all of these results using the Hyphy-Vision Option. 
+
+When viewing MEME results click on the "p-value" column to bring all of the statistically significant sites to the top of the list.
+
+
+
+
 
 
 
