@@ -81,9 +81,37 @@ The perl script CODEML_TREE_ALN_ALT.pl will create the control file for running 
 
 Again make a list of the CTL files that you wish to run, then use the perl script below.
 
-The perl script CODEML_CTL_RUN .pl will run the control files for the null and alternative models. I suggest that you run all the ALT models first and all the NULL models second. You will need to modify the line below to include the complete path to your installation of CODEML.
+The perl script CODEML_CTL_RUN.pl will run the control files for the null and alternative models. I suggest that you run all the ALT models first and all the NULL models second. You will need to modify the line below to include the complete path to your installation of CODEML.
 
 system("/YOUR_PATH/codeml/paml4.9d/bin/codeml /YOUR_PATH/MCL_CTL_Files/$ctl_files[$i]\n");
+
+Once complete you will have two CODEML MCL Results files for each of your CDS gene alignments (ALT versus NULL). Using grep you can now gather all of the lnL values for each model.
+
+Example (degrees of freedom depends on the number of branches in your tree)
+>grep lnL mlcnull_OG0009178.cdsaln.phy
+>lnL(ntime: 21  np: 25):  -2592.532466      +0.000000
+
+There are numerous ways to just grep the lnL from the null and alt models if you have them all in the same directory, but if you are unfamiliar with those options, just put them in separate directories.
+
+grep lnL mlcnalt_OG000****.cdsaln.phy > ALT_list
+grep lnL mlcnull_OG000****.cdsaln.phy > Null_list
+
+These lists can be imported into excel or another spreadsheet program. I will provide a template for Excel.The difference between the ALT and NULL lnL can be used in a chi square test for level of significance.
+
+Excel FIle Template = CODEML_Results
+2(lnL1(ALT)-lnL0(NULL))=CHISQ.DIST(I10,1, FALSE)
+
+The resulting P-values may be corrected for multiple comparisons using Benjamini and Hochberg (1995;2010) using R or simply use the website listed below.
+
+https://www.sdmproject.com/utilities/?show=FDR
+
+
+
+
+
+
+
+
 
 
 
