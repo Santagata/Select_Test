@@ -229,6 +229,16 @@ Parsing *.json files produced by aBSREL and MEME is not a simple one or two comm
 When viewing MEME results click on the "p-value" column to bring all of the statistically significant sites to the top of the list.
 
 
+OPTIONAL TESTS
+
+1) SOWHAT program for automating the SOWH test (Church et al., 2015) to evaluate likelihood differences between habitat-constrained topologies for individual gene trees and phylogenomic-based species tree. Essentially the likelihood difference between the Best-Habitat-Constrained-Tree and the Best-Species-Tree provide a metric by which one may quantify the degree to which particular genes have characters that agree with Habitiat versus Species Relationship groupings. This test is based on RAxML and although RAxML can use either phylip or fasta alignments, it may be better to use phylip formats.
+
+The sowhat program automates the SOWH phylogenetic topology test, which uses parametric bootstrapping to evaluate alternative tree topologies. It can be downloaded here (https://github.com/josephryan/SOWHAT). The process can be computationally intensive so I suggest running it on a subset of genes found significant by the other selection tests. A sample command line is shown below.
+
+sowhat --constraint=Habitat_Tree.tre --aln=ALignment --name=Gene_Name --dir=Directory_Name --raxml_model=PROTGAMMAGTR --treetwo=Unrooted_Best_Species_Tree.tre
+
+
+
 
 
 
