@@ -229,6 +229,35 @@ Parsing *.json files produced by aBSREL and MEME is not a simple one or two comm
 When viewing MEME results click on the "p-value" column to bring all of the statistically significant sites to the top of the list.
 
 
+5) GO-Panther Classifications for the Significant Genes.
+
+All of you likely have a preferred way of gathering the GO and Panther classifications for your genes of interest, below I describe a relaitively simple and fast way to classify the molecular functions of your gene candidates.
+
+First make a query file from the peptide sequences (one per candidate gene) in a fasta format.
+
+Then go to Agbase http://agbase.msstate.edu/cgi-bin/tools/GOanna.cgi and load this file into the GOanna Tool. I suggest using the Agbase-Uniprot database but how you set up the stringency of your blastp search is up to you to get the most meaningful results. Depending on the taxa of choice you may need to adjust the default values for evalue, percent identity, and percent coverage.
+
+The output from GOanna should be then be converted into a Gene Association Format using GOanna2ga
+
+http://agbase.msstate.edu/cgi-bin/tools/GOanna2ga.cgi
+
+The output from GOanna2ga provides Go classifications and Uniprot identifications for your genes. The Uniprto identification column will likely have repeat IDs from the blastp results, so it is best to creat a new text file list from this column (designated as "With (or) From"). 
+
+Sort this text file to contain only the unique IDs
+
+sort -u UniprotID.txt > UniprotID_s.txt
+
+Then replace the new line breaks (/n) with commas
+
+perl -p -e 's/\n/,/' UniprotID_s.txt > UniprotID_s2.txt
+
+Use the comma deliminated Uniprot IDs to get Panther classifications for your genes.
+
+http://pantherdb.org
+
+Select the organism database(s) sets most applicable to your query and review the results for the five categories of Panther classifications: 1) Molecular Function, 2) Biological Processes, 3)Cellular Component, 4) Protein Class, and 5)Pathway.
+
+
 OPTIONAL TESTS
 
 1) SOWHAT program for automating the SOWH test (Church et al., 2015) to evaluate likelihood differences between habitat-constrained topologies for individual gene trees and phylogenomic-based species tree. Essentially the likelihood difference between the Best-Habitat-Constrained-Tree and the Best-Species-Tree provide a metric by which one may quantify the degree to which particular genes have characters that agree with Habitiat versus Species Relationship groupings. This test is based on RAxML and although RAxML can use either phylip or fasta alignments, it may be better to use phylip formats.
@@ -242,18 +271,30 @@ sowhat --constraint=Habitat_Tree.tre --aln=ALignment --name=Gene_Name --dir=Dire
 Select References
 
 Benjamini Y. 2010. Discovering the false discovery rate. Journal of the Royal Statistical Society: Series B (Statistical Methodology) 72:405–416.
+
 Bielawski JP, Baker JL, Mingrone J. 2016. Inference of Episodic Changes in Natural Selection Acting on Protein Coding Sequences via CODEML. Curr Protoc Bioinformatics 54:6.15.1–6.15.32.
+
 Church SH, Ryan JF, Dunn CW. 2015. Automation and Evaluation of the SOWH Test with SOWHAT. Syst Biol 64:1048–1058.
+
 Delport W, Poon AFY, Frost SDW, Kosakovsky Pond SL. 2010. Datamonkey 2010: a suite of phylogenetic analysis tools for evolutionary biology. Bioinformatics 26:2455–2457.
+
 Murrell B, Weaver S, Smith MD, Wertheim JO, Murrell S, Aylward A, Eren K, Pollner T, Martin DP, Smith DM, Scheffler K, Kosakovsky Pond SL. 2015. Gene-Wide Identification of Episodic Selection. Molecular Biology and Evolution 32:1365–1371.
+
 Murrell B, Wertheim JO, Moola S, Weighill T, Scheffler K, Kosakovsky Pond SL. 2012. Detecting individual sites subject to episodic diversifying selection. PLoS Genet 8:1-10.
+
 Pond SLK, Frost SDW, Muse SV. 2005. HyPhy: hypothesis testing using phylogenies. Bioinformatics 21:676–679.
 Revell LJ. 2011. phytools: an R package for phylogenetic comparative biology (and other things). Methods in Ecology and Evolution 3:217–223.
+
 Smith MD, Wertheim JO, Weaver S, Murrell B, Scheffler K, Kosakovsky Pond SL. 2015. Less is more: an adaptive branch-site random effects model for efficient detection of episodic diversifying selection. Molecular Biology and Evolution 32:1342–1353.
+
 Thomas GWC, Hahn MW, Hahn Y. 2017. The effects of increasing the number of taxa on inferences of molecular convergence. Genome Biology and Evolution 9(1):213–221. 
+
 Yang Z. 2007. PAML 4: Phylogenetic Analysis by Maximum Likelihood. Molecular Biology and Evolution 24:1586–1591.
+
 Yang Z, Bielawski JP. 2000. Statistical methods for detecting molecular adaptation. Trends in Ecology & Evolution 15:496–503.
+
 Yang Z, Wong WSW, Nielsen R. 2005. Bayes empirical bayes inference of amino acid sites under positive selection. Molecular Biology and Evolution 22:1107–1118.
+
 Zhang J. 2005. Evaluation of an Improved Branch-Site Likelihood Method for Detecting Positive Selection at the Molecular Level. Molecular Biology and Evolution 22:2472–2479.
 
 
