@@ -8,7 +8,7 @@ B) OrthoFinder: https://github.com/davidemms/OrthoFinder
 C) PhyloTreePruner:http://sourceforge.net/projects/phylotreepruner/
  
 
-Your final alignments should onlu have each of your species represented once in each alignment (no paralogs).
+Your final alignments should only have each of your species represented once in each alignment (no paralogs).
 
 Once you have your alignment peptide files there will likely be a need to trim the names of species using some form of sed command and/or perl script that keeps everyting up to the first space on the Species ID line (e.g., see Trimtospace.pl). You do not want to overwrite your original files. One possible solution is listed below.
 
@@ -61,6 +61,10 @@ system "perl pal2nal.pl $a_files[$i] $c_files[$i] -output paml -nogap -codontabl
 change paml to fasta
 
 Now you have all the aligned cds files that you will need for PAML:CODEML and HYPHY.
+
+Remember when editing or using perl and shell scripts for the first time you may need to change the permissions on the file to allow you to run it.
+
+chmod 755 perl script or shell script should do the trick.
 
 1)  Running CODEML through PAML
 
