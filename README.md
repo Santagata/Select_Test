@@ -1,4 +1,14 @@
 # Polar Workshop Workflow
+
+Target Dates for Results from Workgroups
+
+aBSREL: 02/28/18
+BUSTED: 03/23/18
+MEME: 04/16/18
+CODEML and BEB: 05/16/18
+GO/Panther/KEGG Classifications: 06/01/18
+
+
 How you choose to create a dataset of orthologous gene alignments for your work is up to you. If you have questions about this step, I suggest that you look into the following methods. 
 
 A) Transdecoder: https://github.com/TransDecoder/TransDecoder/wiki
@@ -10,7 +20,7 @@ C) PhyloTreePruner:http://sourceforge.net/projects/phylotreepruner/
 
 Your final alignments should only have each of your species represented once in each alignment (no paralogs).
 
-Once you have your alignment peptide files there will likely be a need to trim the names of species using some form of sed command and/or perl script that keeps everyting up to the first space on the Species ID line (e.g., see Trimtospace.pl). You do not want to overwrite your original files. One possible solution is listed below.
+Once you have your alignment peptide files there will likely be a need to trim the names of species using some form of sed command and/or perl script that keeps everyting up to the first space on the Species ID line (e.g., see Trimtospace.pl). You do not want to overwrite your original files. One possible solution is listed below keeping in mind that you will need to tailor the sed command and perl scripts to your own needs based on your particular datasets.
 
 for file in *.fa; do sed 's///g' $file > "$(basename "$file" .tex)_1"; done
 
