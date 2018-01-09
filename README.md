@@ -191,6 +191,25 @@ Installation instructions can be found here. https://veg.github.io/hyphy-site/in
 HYPHY installation depends on using cmake https://cmake.org/download/
 https://cmake.org/install/
 
+Once you have updated your GCC library, you may need to keep the old library for other programs and system requirements. If so, when installing HYPHY you will need to specify the new GCC library location when using CMAKE.
+
+An example of the installation process would be (obviously your directories would be different). 
+
+1) Install the newer version of the GCC libraries. 2) Install Cmake. 3) Install the latest version of HYPHY. 
+
+4) tar xzvf /data/santagata/HYPHY/2.3.6.tar.gz. 
+5) cd hyphy-2.3.6/ 
+6) cmake -DCMAKE_CXX_COMPILER=/data/gnu72/bin/g++ -DCMAKE_C_COMPILER=/data/gnu72/bin/gcc ./ 
+7) make HYPHYMP and then run ‘make install’. (edited)
+
+When running HYPHYMP for the first time you may get an error message that the program cannot find particular files in the new libraries. You may be able to overcome this issue with the following command telling HYPHYMP specifically where to look on your system for the files.
+
+error messages: HYPHYMP: /usr/lib64/libgomp.so.1: version `GOMP_4.0' not found (required by HYPHYMP)
+HYPHYMP: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by HYPHYMP)
+HYPHYMP: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by HYPHYMP)
+ 
+Tell HYPHYMP where these files are found. ‘export LD_LIBRARY_PATH=/data/gnu72/lib64:$LD_LIBRARY_PATH’
+
 There are several ways to batch run files using Hyphy and parse the resulting *.json files from BUSTED, aBSREL, and MEME analyses. One interesting additional option if you prefer Biopython can be found at https://github.com/sjspielman/phyphy.
 
 However I will suggest starting with a more simplistic approach using a shell script.
