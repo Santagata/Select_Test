@@ -278,7 +278,7 @@ The output from GOanna should be then be converted into a Gene Association Forma
 
 http://agbase.msstate.edu/cgi-bin/tools/GOanna2ga.cgi
 
-The output from GOanna2ga provides Go classifications and Uniprot identifications for your genes. The Uniprto identification column will likely have repeat IDs from the blastp results, so it is best to creat a new text file list from this column (designated as "With (or) From"). 
+The output from GOanna2ga provides Go classifications and Uniprot identifications for your genes. The Uniprot identification column will likely have repeat IDs from the blastp results, so it is best to creat a new text file list from this column (designated as "With (or) From"). 
 
 Sort this text file to contain only the unique IDs
 
